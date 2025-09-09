@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard - GoldenSign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-icon">🏆</span>
+                    <span class="logo-text">GoldenSign</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Manager Dashboard -->
+    <main class="manager-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Manager Dashboard</h1>
+                <p>Create and manage your tournaments and courses</p>
+            </div>
+
+            <!-- Dashboard Tabs -->
+            <div class="dashboard-tabs">
+                <button id="createTab" class="tab-btn active" onclick="switchTab('create')">
+                    <span class="tab-icon">➕</span>
+                    Create Event
+                </button>
+                <button id="communitiesTab" class="tab-btn" onclick="switchTab('communities')">
+                    <span class="tab-icon">🏆</span>
+                    My Communities
+                </button>
+            </div>
+
+            <!-- Create New Section -->
+            <section id="createSection" class="create-section">
+                <div class="section-header">
+                    <h2>Create New Event</h2>
+                    <div class="event-type-toggle">
+                        <button id="tournamentBtn" class="toggle-btn active" onclick="toggleEventType('tournament')">Tournament</button>
+                        <button id="courseBtn" class="toggle-btn" onclick="toggleEventType('course')">Course</button>
+                    </div>
+                </div>
+
+                <form id="eventForm" class="event-form">
+                    <div class="form-group">
+                        <label for="eventTitle">Title *</label>
+                        <input type="text" id="eventTitle" name="title" required placeholder="Enter event title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDescription">Description *</label>
+                        <textarea id="eventDescription" name="description" required placeholder="Describe your event..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="maxParticipants">Max Participants *</label>
+                            <input type="number" id="maxParticipants" name="maxParticipants" required min="1" placeholder="e.g., 50">
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDate">Date *</label>
+                            <input type="datetime-local" id="eventDate" name="date" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span class="btn-icon">✨</span>
+                        Create Event & Generate Link
+                    </button>
+                </form>
+            </section>
+
+            <!-- Events List -->
+            <section id="eventsSection" class="events-section">
+                <div class="section-header">
+                    <h2>Your Events</h2>
+                    <span id="eventsCount" class="events-count">0 events</span>
+                </div>
+
+                <div id="eventsList" class="events-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">📅</div>
+                        <h3>No events yet</h3>
+                        <p>Create your first tournament or course to get started!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Communities Section -->
+            <section id="communitiesSection" class="communities-section" style="display: none;">
+                <div class="section-header">
+                    <h2>My Communities</h2>
+                    <div class="communities-stats">
+                        <span id="totalEvents" class="stat-item">0 Events</span>
+                        <span id="totalParticipants" class="stat-item">0 Participants</span>
+                    </div>
+                </div>
+
+                <div class="communities-filters">
+                    <div class="filter-group">
+                        <label for="typeFilter">Filter by Type:</label>
+                        <select id="typeFilter" onchange="filterCommunities()">
+                            <option value="all">All Types</option>
+                            <option value="tournament">Tournaments</option>
+                            <option value="course">Courses</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="statusFilter">Filter by Status:</label>
+                        <select id="statusFilter" onchange="filterCommunities()">
+                            <option value="all">All Status</option>
+                            <option value="open">Open for Registration</option>
+                            <option value="full">Full</option>
+                            <option value="past">Past Events</option>
+                        </select>
+                    </div>
+                    <button onclick="exportCommunitiesData()" class="btn btn-secondary">
+                        <span class="btn-icon">📊</span>
+                        Export Data
+                    </button>
+                </div>
+
+                <div id="communitiesList" class="communities-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">🏆</div>
+                        <h3>No communities yet</h3>
+                        <p>Create your first tournament or course to start building your community!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Event Details</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalEventInfo"></div>
+                <div class="modal-actions">
+                    <button id="copyLinkBtn" class="btn btn-primary" onclick="copyEventLinkFromModal()">
+                        <span class="btn-icon">📋</span>
+                        Copy Link
+                    </button>
+                    <button id="viewInscriptionsBtn" class="btn btn-secondary" onclick="viewInscriptionsFromModal()">
+                        <span class="btn-icon">👥</span>
+                        View Inscriptions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inscriptions Modal -->
+    <div id="inscriptionsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Event Inscriptions</h3>
+                <button class="modal-close" onclick="closeInscriptionsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="inscriptionsList" class="inscriptions-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

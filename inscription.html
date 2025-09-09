@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Event - GoldenSign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-icon">🏆</span>
+                    <span class="logo-text">GoldenSign</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="inscription-page">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading event details...</p>
+            </div>
+
+            <!-- Event Not Found -->
+            <div id="notFoundState" class="not-found-state" style="display: none;">
+                <div class="not-found-icon">❌</div>
+                <h2>Event Not Found</h2>
+                <p>The event you're looking for doesn't exist or has been removed.</p>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+
+            <!-- Event Details -->
+            <div id="eventDetails" class="event-details" style="display: none;">
+                <div class="event-header">
+                    <div class="event-type-badge" id="eventTypeBadge"></div>
+                    <h1 id="eventTitle"></h1>
+                    <p id="eventDescription"></p>
+                </div>
+
+                <div class="event-info">
+                    <div class="info-card">
+                        <div class="info-icon">📅</div>
+                        <div class="info-content">
+                            <h3>Date & Time</h3>
+                            <p id="eventDate"></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">👥</div>
+                        <div class="info-content">
+                            <h3>Available Slots</h3>
+                            <p id="availableSlots"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="registration-section">
+                    <h2>Register for this Event</h2>
+                    <form id="registrationForm" class="registration-form">
+                        <div class="form-group">
+                            <label for="participantName">Full Name *</label>
+                            <input type="text" id="participantName" name="name" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participantEmail">Email Address *</label>
+                            <input type="email" id="participantEmail" name="email" required placeholder="Enter your email address">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span class="btn-icon">✅</span>
+                            Confirm Registration
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="successState" class="success-state" style="display: none;">
+                <div class="success-animation">
+                    <div class="success-checkmark">✅</div>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p id="successMessage"></p>
+                <div class="success-actions">
+                    <button onclick="goToConfirmation()" class="btn btn-primary">View Confirmation</button>
+                    <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+
+            <!-- Full State -->
+            <div id="fullState" class="full-state" style="display: none;">
+                <div class="full-icon">❌</div>
+                <h2>Event is Full</h2>
+                <p>Sorry, this event has reached its maximum capacity.</p>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenSign - Tournament & Course Inscription</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏆</span>
+                <span class="logo-text">GoldenSign</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Organize & Join Tournaments with Ease</h1>
+                <p class="hero-subtitle">Fast. Simple. Elegant.</p>
+                <div class="hero-buttons">
+                    <a href="manager.html" class="btn btn-primary">Create a Tournament</a>
+                    <a href="#join" class="btn btn-secondary">Join a Course</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Tournaments</h3>
+                    <p>Create competitive events</p>
+                </div>
+                <div class="hero-card">
+                    <div class="card-icon">📚</div>
+                    <h3>Courses</h3>
+                    <p>Organize learning sessions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create</h3>
+                        <p>Set up your tournament or course with details like date, participants, and description.</p>
+                    </div>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Share</h3>
+                        <p>Generate a unique link and share it with potential participants.</p>
+                    </div>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Join</h3>
+                        <p>Participants click the link to register and confirm their participation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join-section">
+        <div class="container">
+            <div class="join-content">
+                <h2>Ready to Join?</h2>
+                <p>Enter the invitation link you received to register for a tournament or course.</p>
+                <div class="join-input-group">
+                    <input type="text" id="joinLink" placeholder="Paste your invitation link here..." class="join-input">
+                    <button onclick="joinFromLink()" class="btn btn-primary">Join Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">🏆</span>
+                    <span class="logo-text">GoldenSign</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="#privacy" class="footer-link">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GoldenSign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

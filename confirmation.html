@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation - GoldenSign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-icon">🏆</span>
+                    <span class="logo-text">GoldenSign</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="confirmation-page">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading confirmation details...</p>
+            </div>
+
+            <!-- Confirmation Not Found -->
+            <div id="notFoundState" class="not-found-state" style="display: none;">
+                <div class="not-found-icon">❌</div>
+                <h2>Confirmation Not Found</h2>
+                <p>We couldn't find your registration confirmation.</p>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+
+            <!-- Confirmation Details -->
+            <div id="confirmationDetails" class="confirmation-details" style="display: none;">
+                <div class="confirmation-header">
+                    <div class="success-animation">
+                        <div class="success-checkmark">✅</div>
+                    </div>
+                    <h1>Registration Confirmed!</h1>
+                    <p>You have successfully registered for the event.</p>
+                </div>
+
+                <div class="confirmation-card">
+                    <div class="card-header">
+                        <h2>Registration Details</h2>
+                        <div class="status-badge" id="statusBadge">Accepted</div>
+                    </div>
+                    
+                    <div class="confirmation-info">
+                        <div class="info-row">
+                            <span class="info-label">Name:</span>
+                            <span class="info-value" id="participantName"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value" id="participantEmail"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Event:</span>
+                            <span class="info-value" id="eventTitle"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Type:</span>
+                            <span class="info-value" id="eventType"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date:</span>
+                            <span class="info-value" id="eventDate"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Registration ID:</span>
+                            <span class="info-value" id="registrationId"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button onclick="printConfirmation()" class="btn btn-secondary">
+                        <span class="btn-icon">🖨️</span>
+                        Print Confirmation
+                    </button>
+                    <a href="index.html" class="btn btn-primary">Back to Home</a>
+                </div>
+
+                <div class="confirmation-note">
+                    <p><strong>Important:</strong> Please save this confirmation for your records. You will receive an email confirmation shortly.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
